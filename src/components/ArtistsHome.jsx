@@ -1,28 +1,28 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import "../css/ArtistsHome.css";
+import ArtistItem from "./ArtistItem";
 
 function artistsHome() {
   return (
     <>
-      {/* ============<logo/>============= */}
-     
+      {/* ============<logo section/>============= */}
+
       <div className="navListSection">
         <div className="logo">
-            <div className="logored">Logo</div>
+          <div className="logored">Logo</div>
         </div>
       </div>
 
-      {/* ============<Banner/>============= */}
+      {/* ============<Banner section/>============= */}
       <div className="banner-bg">
         <p className="banner-word">
-            FAMOUS <br/>
-            ARTISTS
+          FAMOUS <br />
+          ARTISTS
         </p>
-        
       </div>
 
-      {/* ============<search/>============= */}
+      {/* ============<search section/>============= */}
       <div className="search-bg">
         <div className="search-section">
           <input
@@ -38,7 +38,6 @@ function artistsHome() {
           <button className="search-btn">
             <FiSearch color="#707070" fontSize="17px" />
           </button>
-
         </div>
         <div className="hotTerm">
           <ul>
@@ -60,7 +59,28 @@ function artistsHome() {
           </ul>
         </div>
       </div>
-      {/* <NewsSearch key={inputTerm}/> */}
+
+      {/* listing section */}
+      <div className="listSection">
+    
+        <div className="listingWrap">
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+                <ArtistItem/>
+            </div>
+      </div>
     </>
   );
 }

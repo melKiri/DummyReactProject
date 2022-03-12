@@ -150,3 +150,72 @@ select {
 .hotTerm ul li a:hover {
   color: #1d1d1d;
 }
+
+/* ========================listing style ================================================*/
+
+.listSection {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  height: 800px;
+  background-color: white;
+}
+
+.blackLine {
+  color: transparent;
+  margin: 16px auto;
+  width: 96%;
+  height: 5px;
+  background-color: black;
+}
+
+.listingWrap {
+  /* background-color: aqua; */
+  /* overflow: scroll; */
+  /* margin-bottom: 20px; */
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+/* ========================Artist Item style ================================================*/
+.ArtistItemWrap {
+  position: relative;
+  width: 158px;
+  height: 210px;
+  /* background-color: pink; */
+}
+.ArtistCoverImg {
+  width: 100%;
+  height: 100%;
+}
+.firstName {
+  font: normal normal normal 11px/12px Georgia;
+  letter-spacing: 1.47px;
+  color: white;
+  opacity: 1;
+  padding: 0;
+  margin: 0;
+}
+.lastName {
+  font: normal normal normal 21px/24px Georgia;
+  letter-spacing: 2.81px;
+  color: white;
+  opacity: 1;
+  padding: 0;
+  margin: 0;
+}
+.ArtistName {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-25px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
