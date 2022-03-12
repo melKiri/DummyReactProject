@@ -1,0 +1,17 @@
+.banner-bg {
+  height: 155px;
+  /* UI Properties */
+  background: #fafafa 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.banner-word {
+  text-transform: uppercase;
+  padding: 36px 0 0 136px;
+  margin: 0px;
+  /* font: normal normal medium 43px/52px Helvetica Neue; */
+  letter-spacing: 5.76px;
+  color: #030303;
+  font-size: 43px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
