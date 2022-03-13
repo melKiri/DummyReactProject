@@ -109,12 +109,16 @@ function ArtistsHome() {
               </p>
             </div>
             <div className="modal-artist-more">
-              <h6>
-                Date of birth <span> 1921</span>
+              <div className="dob">
+              <h6>Date of birth               </h6>
+              <h6><span>1921</span></h6>
+              </div>
+             <div className="dob">
+             <h6>
+                Date of death 
               </h6>
-              <h6>
-                Date of death <span>1995</span>
-              </h6>
+              <h6><span>1995</span></h6>
+             </div>
               <p>
                 Once described as New York’s “most famous unknown artist,” Ray
                 Johnson was a renowned maker of meticulous collages and a

@@ -305,7 +305,13 @@ select {
 /* right side */
 .modal-artist-more span {
   color: #0000005d;
-  margin-left: 50px;
+  text-align: right;
+  
+}
+.modal-artist-more .dob {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
 }
 .modal-artist-more p {
   margin-top: 28px;
