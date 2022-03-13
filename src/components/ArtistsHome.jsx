@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import "../css/ArtistsHome.css";
 import AddArtistBtn from "./AddArtistBtn";
 import ArtistItem from "./ArtistItem";
-
+import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ArtistCoverImg from "../images/ray.png";
 
 function ArtistsHome() {
+const [myData,setMyData]=useState([]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/api/view-artists").then((res) => {
+      setMyData(res.data);
+      console.log(res.data);
+    });
+  }, []);
   return (
     <>
       {/* ============<logo section/>============= */}
@@ -71,13 +79,9 @@ function ArtistsHome() {
       {/* listing section */}
       <div className="listSection">
         <div className="listingWrap">
-          <ArtistItem onClick={handleShow} />
-          <ArtistItem />
-          <ArtistItem />
-          <ArtistItem />
-          <ArtistItem />
-          <ArtistItem />
-          <ArtistItem />
+          {myData.map((item, id) => {
+            return <ArtistItem {...item} key={item._id} onClick={handleShow}/>;
+          })}
           <AddArtistBtn />
         </div>
       </div>
