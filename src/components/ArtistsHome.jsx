@@ -8,27 +8,39 @@ import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function ArtistsHome() {
-const [myData,setMyData]=useState([]);
- const [itemData,setItemData]=useState({});
+  const [myData, setMyData] = useState([]);
+  const [itemData, setItemData] = useState({});
   const [show, setShow] = useState(false);
+  const [newData, setnewData] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
-    console.log('when onclick get id=',id);
     setShow(true);
-     axios.get(`http://localhost:4000/api/view-artist-by-id/${id}`).then((res) => {
-      setItemData(res.data);
-      console.log('my click data = ',res.data.firstName);
+    axios
+      .get(`http://localhost:5000/api/view-artist-by-id/${id}`)
+      .then((res) => {
+        setItemData(res.data);
+      });
+  };
+  const handleDelete = (id) => {
+    console.log("will delete id =", id);
+
+    axios.delete(`http://localhost:5000/api/delete-artist-by-id/${id}`).then((response) => {});
+    console.log(" delete");
+    axios.get("http://localhost:5000/api/view-artists").then((res) => {
+      console.log(" get new data");
+      setnewData(res.data);
+      console.log(res.data);
     });
-
-  }
-
+    console.log(" close modal");
+    setShow(false);
+  };
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/view-artists").then((res) => {
+    axios.get("http://localhost:5000/api/view-artists").then((res) => {
       setMyData(res.data);
-      console.log('listing data = ',res.data);
+      console.log(res.data);
     });
-  }, []);
+  }, [newData]);
   return (
     <>
       {/* ============<logo section/>============= */}
@@ -89,40 +101,46 @@ const [myData,setMyData]=useState([]);
       <div className="listSection">
         <div className="listingWrap">
           {myData.map((item, id) => {
-            return <ArtistItem {...item} key={item._id} onClick={() => handleShow(item._id)}/>;
+            return (
+              <ArtistItem
+                {...item}
+                key={item._id}
+                onClick={() => handleShow(item._id)}
+              />
+            );
           })}
           <AddArtistBtn />
         </div>
       </div>
 
       {/* description Modal */}
-    
+
       <Modal
         show={show}
         onHide={() => setShow(false)}
         dialogClassName="modal-90w"
         aria-labelledby="example-custom-modal-styling-title"
       >
-        <Modal.Header >
+        <Modal.Header>
           <Modal.Title id="example-custom-modal-styling-title">
             <div className="logored">logo</div>
             <div className="modal-title-name">FAMOUS ARTISTS</div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="modal-artist-name">{itemData.firstName}  {itemData.lastName}</div>
+          <div className="modal-artist-name">
+            {itemData.firstName} {itemData.lastName}
+          </div>
           <div className="modal-more-wrap">
             <div className="modal-artist-pic">
               <div>
                 <img src={itemData.coverImage} alt="" />
               </div>
-              <p>
-              {itemData.coverTitle}
-              </p>
+              <p>{itemData.coverTitle}</p>
             </div>
             <div className="modal-artist-more">
               <h6>
-                Date of birth <span>  {itemData.DateOfBirth}</span>
+                Date of birth <span> {itemData.DateOfBirth}</span>
               </h6>
               <h6>
                 Date of death <span> {itemData.DateOfDeath}</span>
@@ -132,8 +150,12 @@ const [myData,setMyData]=useState([]);
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark" onClick={handleClose}>Close</Button>
-          <Button variant="danger">Delete</Button>
+          <Button variant="dark" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="danger" onClick={() => handleDelete(itemData._id)}>
+            Delete
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
