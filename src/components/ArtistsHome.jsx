@@ -1,6 +1,7 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import "../css/ArtistsHome.css";
+import AddArtistBtn from "./AddArtistBtn";
 import ArtistItem from "./ArtistItem";
 
 function artistsHome() {
@@ -78,7 +79,7 @@ function artistsHome() {
                 <ArtistItem/>
                 <ArtistItem/>
                 <ArtistItem/>
-                <ArtistItem/>
+                <AddArtistBtn/>
             </div>
       </div>
     </>
