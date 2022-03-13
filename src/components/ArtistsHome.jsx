@@ -83,8 +83,7 @@ function ArtistsHome() {
       </div>
 
       {/* description Modal */}
-      <Button variant="primary">Launch demo modal</Button>
-
+    
       <Modal
         show={show}
         onHide={() => setShow(false)}
