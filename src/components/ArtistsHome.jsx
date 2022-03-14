@@ -7,6 +7,8 @@ import axios from "axios";
 import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { Link } from "react-router-dom";
+
 function ArtistsHome() {
   const [myData, setMyData] = useState([]);
   const [itemData, setItemData] = useState({});
@@ -24,7 +26,9 @@ function ArtistsHome() {
   const handleDelete = (id) => {
     console.log("will delete id =", id);
 
-    axios.delete(`http://localhost:5000/api/delete-artist-by-id/${id}`).then((response) => {});
+    axios
+      .delete(`http://localhost:5000/api/delete-artist-by-id/${id}`)
+      .then((response) => {});
     console.log(" delete");
     axios.get("http://localhost:5000/api/view-artists").then((res) => {
       console.log(" get new data");
@@ -109,7 +113,12 @@ function ArtistsHome() {
               />
             );
           })}
-          <AddArtistBtn />
+          <nav>
+            <Link to="/add">
+              {" "}
+              <AddArtistBtn />
+            </Link>
+          </nav>
         </div>
       </div>
 
@@ -145,6 +154,7 @@ function ArtistsHome() {
               <h6>
                 Date of death <span> {itemData.DateOfDeath}</span>
               </h6>
+
               <p>{itemData.description}</p>
             </div>
           </div>

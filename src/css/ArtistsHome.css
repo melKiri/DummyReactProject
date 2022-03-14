@@ -200,6 +200,9 @@ select {
 }
 .firstName {
   text-shadow: rgb(149, 148, 148) 0.1em 0.1em 0.2em;
+
+  text-transform: uppercase;
+
   font: normal normal normal 11px/12px Georgia;
   letter-spacing: 1.47px;
   color: white;
@@ -208,8 +211,10 @@ select {
   margin: 0;
 }
 .lastName {
+  text-transform: uppercase;
   text-shadow: rgb(149, 148, 148) 0.1em 0.1em 0.2em;
   font: normal normal normal 20px/24px Georgia;
+
   letter-spacing: 2.81px;
   color: white;
   opacity: 1;
@@ -307,10 +312,55 @@ select {
 /* right side */
 .modal-artist-more span {
   color: #0000005d;
-  margin-left: 50px;
+  text-align: right;
+}
+.modal-artist-more .dob {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
 }
 .modal-artist-more p {
   margin-top: 28px;
   font: normal normal normal 12px/14px Helvetica Neue;
   color: #00000090;
+}
+
+/* ========================add page style =============================*/
+/* add-section  */
+.addSection {
+  background-color: white;
+  height: 100vh;
+  /* border: green 1px solid; */
+  padding-left: 86px;
+  padding-right: 92px;
+}
+.addlogoWrap {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: #707070 1px solid;
+}
+.addSection H4 {
+  padding-top: 45px;
+  margin-bottom: 35px;
+}
+.addSection .mb-3 {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+.addSection .mb-3 div {
+  width: 100%;
+}
+.addSection .mb-6 {
+  margin-top: 10px;
+}
+
+.addSection Button {
+  margin-top: 20px;
+}
+.btn-group {
+  display: flex;
+  gap: 30px;
 }
