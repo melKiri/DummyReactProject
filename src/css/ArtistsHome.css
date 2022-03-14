@@ -199,6 +199,7 @@ select {
   margin: 0;
 }
 .firstName {
+  text-transform: uppercase;
   font: normal normal normal 11px/12px Georgia;
   letter-spacing: 1.47px;
   color: white;
@@ -207,7 +208,9 @@ select {
   margin: 0;
 }
 .lastName {
-  font: normal normal normal 21px/24px Georgia;
+  text-transform: uppercase;
+  text-shadow: rgb(149, 148, 148) 0.1em 0.1em 0.2em;
+  font: normal normal normal 20px/24px Georgia;
   letter-spacing: 2.81px;
   color: white;
   opacity: 1;

@@ -8,8 +8,8 @@ function ArtistItem(props) {
       <div className="ArtistItemWrap" onClick={props.onClick} >
         <img className="ArtistCoverImg" src={ArtistCoverImg} alt="#" />
         <div className="ArtistName">
-          <p className="firstName"> RAY</p>
-          <p className="lastName">JOHNSON</p>
+          <p className="firstName"> ray</p>
+          <p className="lastName"> johnson</p>
         </div>
       </div>
     </>
