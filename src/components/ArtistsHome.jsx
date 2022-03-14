@@ -7,6 +7,7 @@ import ArtistItem from "./ArtistItem";
 import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ArtistCoverImg from "../images/ray.png";
+import { Link } from 'react-router-dom';
 
 function ArtistsHome() {
   const [show, setShow] = useState(false);
@@ -78,7 +79,10 @@ function ArtistsHome() {
           <ArtistItem />
           <ArtistItem />
           <ArtistItem />
-          <AddArtistBtn />
+          <nav>
+          <Link to='/add'> <AddArtistBtn /></Link>
+          </nav>
+         
         </div>
       </div>
 

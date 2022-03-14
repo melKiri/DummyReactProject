@@ -306,7 +306,6 @@ select {
 .modal-artist-more span {
   color: #0000005d;
   text-align: right;
-  
 }
 .modal-artist-more .dob {
   display: flex;
@@ -317,4 +316,44 @@ select {
   margin-top: 28px;
   font: normal normal normal 12px/14px Helvetica Neue;
   color: #00000090;
+}
+
+/* ========================add page style =============================*/
+/* add-section  */
+.addSection {
+  background-color: white;
+  height: 100vh;
+  /* border: green 1px solid; */
+  padding-left: 86px;
+  padding-right: 92px;
+}
+.addlogoWrap {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: #707070 1px solid;
+}
+.addSection H4 {
+  padding-top: 45px;
+  margin-bottom: 35px;
+}
+.addSection .mb-3 {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+.addSection .mb-3 div {
+  width: 100%;
+}
+.addSection .mb-6 {
+  margin-top: 10px;
+}
+
+.addSection Button {
+  margin-top: 20px;
+}
+.btn-group {
+  display: flex;
+  gap: 30px;
 }
