@@ -1,32 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form, Modal, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useRef, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 function AddArtist() {
+  const [showA, setShowA] = useState(true);
+  const [show, setShow] = useState(false);
+  const [insert, setInsert] = useState('danger');
   const [validated, setValidated] = useState(false);
 
+  const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+ const handlereload= () => window.location.reload();
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === false) {
-      event.stopPropagation();
+      // event.preventDefault();
+      // event.stopPropagationz();
+    } else {
+      let formdata = {
+        firstName: firstnameRef.current.value,
+        lastName: lastnameRef.current.value,
+        coverImage: linkRef.current.value,
+        description: descriptionRef.current.value,
+        coverTitle: titleRef.current.value,
+        DateOfBirth: dobRef.current.value,
+        DateOfDeath: dodRef.current.value,
+      };
+      console.log("formdata=", formdata);
+      axios
+        .post("//localhost:5000/api/add-artist", formdata)
+        .then((response) => {
+          console.log("res=", response.data);
+          setInsert('success')
+        });
+
+      setShow(true);
     }
-
     setValidated(true);
-
-    let formdata = {
-      firstName: firstnameRef.current.value,
-      lastName: lastnameRef.current.value,
-      coverImage: linkRef.current.value,
-      description: descriptionRef.current.value,
-      coverTitle: titleRef.current.value,
-      DateOfBirth: dobRef.current.value,
-      DateOfDeath: dodRef.current.value,
-    };
-    console.log("formdata=", formdata);
   };
 
   const firstnameRef = useRef();
@@ -87,18 +101,21 @@ function AddArtist() {
           </Form.Group>
 
           <Form.Group className="mb-6">
-            <Form.Label>Artwork Title</Form.Label>
-            <Form.Control type="text" ref={titleRef} required
-            placeholder="{Artist}.  {Artwork Title}.  {date}.  {Origin/Credit Line/Copyright}" />
+            <Form.Label>Artwork Description</Form.Label>
+            <Form.Control
+              type="text"
+              ref={titleRef}
+              required
+              placeholder="{Artist}.  {Artwork Title}.  {date}.  {Origin/Credit Line/Copyright}"
+            />
             <Form.Control.Feedback type="invalid">
-              Please provide a Artwork Title.
+              Please provide a Artwork Description.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3">
             <div>
               <Form.Label>Date Of Birth</Form.Label>
               <Form.Control
-             
                 type="text"
                 ref={dobRef}
                 maxLength="4"
@@ -111,9 +128,13 @@ function AddArtist() {
             </div>
             <div>
               <Form.Label>Date Of Death</Form.Label>
-              <Form.Control type="text" 
-              ref={dodRef} maxLength="4" required
-              placeholder="e.g. 1994" />
+              <Form.Control
+                type="text"
+                ref={dodRef}
+                maxLength="4"
+                required
+                placeholder="e.g. 1994"
+              />
               <Form.Control.Feedback type="invalid">
                 Please provide a Date Of Death or "-" .
               </Form.Control.Feedback>
@@ -146,6 +167,38 @@ function AddArtist() {
           </div>
         </Form>
       </div>
+
+      {/* ============<submit feedback Modal  section/>============= */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header >
+          <Modal.Title>Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Alert show={showA} variant={insert}>
+            {/* <Alert.Heading>How's it going?!</Alert.Heading> */}
+            {insert === "success" ?
+            <p>WOW !! Successfully Added Artist To DB.</p>:
+            <p>Oops !! An Error occurred to insert DB</p>
+            }
+            
+          </Alert>
+        </Modal.Body>
+        <Modal.Footer>
+        <nav>
+              <Link to="/add">
+          <Button variant="danger" onClick={handlereload}>
+            Add New
+          </Button>
+          </Link>
+          <Link to="/"><Button variant="dark" >
+            Browse Artists
+          </Button></Link>
+          
+        </nav>
+        </Modal.Footer>
+      </Modal>
+
+      {/* //================== */}
     </>
   );
 }
