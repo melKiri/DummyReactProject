@@ -185,6 +185,7 @@ select {
 
 /* ========================Artist Item style ================================================*/
 .ArtistItemWrap {
+  background-color: rgba(128, 128, 128, 0.24);
   position: relative;
   width: 158px;
   height: 210px;

@@ -65,7 +65,7 @@ function ArtistsHome() {
       </div>
 
       {/* ============<search section/>============= */}
-      <div className="search-bg">
+      {/* <div className="search-bg">
         <div className="search-section">
           <input
             type="text"
@@ -82,7 +82,7 @@ function ArtistsHome() {
           </button>
         </div>
        
-      </div>
+      </div> */}
 
       {/* listing section */}
       <div className="listSection">
