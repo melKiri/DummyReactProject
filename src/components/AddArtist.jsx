@@ -25,16 +25,16 @@ function AddArtist() {
         firstName: firstnameRef.current.value,
         lastName: lastnameRef.current.value,
         coverImage: linkRef.current.value,
-        description: descriptionRef.current.value,
+        Description: descriptionRef.current.value,
         coverTitle: titleRef.current.value,
         DateOfBirth: dobRef.current.value,
         DateOfDeath: dodRef.current.value,
       };
       console.log("formdata=", formdata);
       axios
-        .post("//localhost:5000/api/add-artist", formdata)
+        .post("//localhost:4000/api/create-artist", formdata)
         .then((response) => {
-          console.log("res=", response.data);
+          // console.log("res=", response.data);
           setInsert('success')
         });
 
@@ -71,9 +71,7 @@ function AddArtist() {
                 type="text"
                 ref={firstnameRef}
                 required={true}
-                // value={fn}
-                // onChange={(e) => setfn(e.target.value)}
-              />
+             />
               <Form.Control.Feedback type="invalid">
                 Please provide a First Name.
               </Form.Control.Feedback>
@@ -175,8 +173,7 @@ function AddArtist() {
         </Modal.Header>
         <Modal.Body>
           <Alert show={showA} variant={insert}>
-            {/* <Alert.Heading>How's it going?!</Alert.Heading> */}
-            {insert === "success" ?
+          {insert === "success" ?
             <p>WOW !! Successfully Added Artist To DB.</p>:
             <p>Oops !! An Error occurred to insert DB</p>
             }
@@ -186,7 +183,7 @@ function AddArtist() {
         <Modal.Footer>
         <nav>
               <Link to="/add">
-          <Button variant="danger" onClick={handlereload}>
+          <Button variant="danger" onClick={handlereload} className="alertBtn">
             Add New
           </Button>
           </Link>

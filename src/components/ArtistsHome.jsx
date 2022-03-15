@@ -18,19 +18,20 @@ function ArtistsHome() {
   const handleShow = (id) => {
     setShow(true);
     axios
-      .get(`http://localhost:5000/api/view-artist-by-id/${id}`)
+      .get(`http://localhost:4000/api/view-artist-by-id/${id}`)
       .then((res) => {
         setItemData(res.data);
+        console.log('item data=',res.data);
       });
   };
   const handleDelete = (id) => {
     console.log("will delete id =", id);
 
     axios
-      .delete(`http://localhost:5000/api/delete-artist-by-id/${id}`)
+      .delete(`http://localhost:4000/api/delete-artist-by-id/${id}`)
       .then((response) => {});
     console.log(" delete");
-    axios.get("http://localhost:5000/api/view-artists").then((res) => {
+    axios.get("http://localhost:4000/api/view-artists").then((res) => {
       console.log(" get new data");
       setnewData(res.data);
       console.log(res.data);
@@ -40,7 +41,7 @@ function ArtistsHome() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/view-artists").then((res) => {
+    axios.get("http://localhost:4000/api/view-artists").then((res) => {
       setMyData(res.data);
       console.log(res.data);
     });
@@ -80,25 +81,7 @@ function ArtistsHome() {
             <FiSearch color="#707070" fontSize="17px" />
           </button>
         </div>
-        {/* <div className="hotTerm">
-          <ul>
-            <li>
-              <a href="/">Bertrand Goldberg </a>
-            </li>
-            <li>
-              <a href="/">Yoon Kwang-cho </a>
-            </li>
-            <li>
-              <a href="/">Isolated Russia </a>
-            </li>
-            <li>
-              <a href="/">Edvard Munch </a>
-            </li>
-            <li>
-              <a href="/">Johannes Vermeer </a>
-            </li>
-          </ul>
-        </div> */}
+       
       </div>
 
       {/* listing section */}
@@ -115,7 +98,7 @@ function ArtistsHome() {
           })}
           <nav>
             <Link to="/add">
-              {" "}
+       
               <AddArtistBtn />
             </Link>
           </nav>
@@ -155,7 +138,7 @@ function ArtistsHome() {
                 Date of death <span> {itemData.DateOfDeath}</span>
               </h6>
 
-              <p>{itemData.description}</p>
+              <p>{itemData.Description}</p>
             </div>
           </div>
         </Modal.Body>
