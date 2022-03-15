@@ -21,29 +21,22 @@ function ArtistsHome() {
       .get(`http://localhost:4000/api/view-artist-by-id/${id}`)
       .then((res) => {
         setItemData(res.data);
-        console.log('item data=',res.data);
       });
   };
   const handleDelete = (id) => {
-    console.log("will delete id =", id);
 
     axios
       .delete(`http://localhost:4000/api/delete-artist-by-id/${id}`)
       .then((response) => {});
-    console.log(" delete");
     axios.get("http://localhost:4000/api/view-artists").then((res) => {
-      console.log(" get new data");
       setnewData(res.data);
-      console.log(res.data);
     });
-    console.log(" close modal");
     setShow(false);
   };
 
   useEffect(() => {
     axios.get("http://localhost:4000/api/view-artists").then((res) => {
       setMyData(res.data);
-      console.log(res.data);
     });
   }, [newData]);
   return (
