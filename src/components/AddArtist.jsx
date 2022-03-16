@@ -169,7 +169,7 @@ function AddArtist() {
       {/* ============<submit feedback Modal  section/>============= */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header >
-          <Modal.Title>Success</Modal.Title>
+          <Modal.Title>Submission Feedback</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert show={showA} variant={insert}>
