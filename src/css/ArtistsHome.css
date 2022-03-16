@@ -182,9 +182,23 @@ select {
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
+.err h5 {
+  color: rgba(138, 17, 17, 0.753);
+}
+.err {
+  width: 60vw;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  height: 60vh;
+}
 
 /* ========================Artist Item style ================================================*/
 .ArtistItemWrap {
+  background-color: rgba(128, 128, 128, 0.24);
   position: relative;
   width: 158px;
   height: 210px;
@@ -199,7 +213,10 @@ select {
   margin: 0;
 }
 .firstName {
+  text-shadow: rgb(149, 148, 148) 0.1em 0.1em 0.2em;
+
   text-transform: uppercase;
+
   font: normal normal normal 11px/12px Georgia;
   letter-spacing: 1.47px;
   color: white;
@@ -211,7 +228,8 @@ select {
   text-transform: uppercase;
   text-shadow: rgb(149, 148, 148) 0.1em 0.1em 0.2em;
   font: normal normal normal 20px/24px Georgia;
-  letter-spacing: 2.81px;
+
+  letter-spacing: 0.81px;
   color: white;
   opacity: 1;
   padding: 0;
@@ -288,7 +306,7 @@ select {
   height: 242px;
   /* UI Properties */
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #707070;
+  /* border: 1px solid #707070; */
   justify-content: center;
   align-items: center;
 }
@@ -359,4 +377,7 @@ select {
 .btn-group {
   display: flex;
   gap: 30px;
+}
+.alertBtn {
+  margin-right: 30px;
 }
