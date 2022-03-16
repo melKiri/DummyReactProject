@@ -14,6 +14,9 @@ function ArtistsHome() {
   const [itemData, setItemData] = useState({});
   const [show, setShow] = useState(false);
   const [newData, setnewData] = useState([]);
+  const [hasErr,sethasErr]=useState(false);
+  const [errMSG,seterrMSG]=useState("");
+
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     setShow(true);
@@ -35,9 +38,30 @@ function ArtistsHome() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/view-artists").then((res) => {
+    axios.get("http://localhost:4000/api/all")
+    .then((res) => {
       setMyData(res.data);
-    });
+    })
+    .catch(function (error) {
+      sethasErr(true);
+      if (error.response) {
+        // Request made and server responded
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        seterrMSG(error.message)
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.log(error.message);
+        seterrMSG(error.message)
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+        seterrMSG(error.message)
+      }
+  
+    })
+  
   }, [newData]);
   return (
     <>
@@ -57,29 +81,16 @@ function ArtistsHome() {
         </p>
       </div>
 
-      {/* ============<search section/>============= */}
-      {/* <div className="search-bg">
-        <div className="search-section">
-          <input
-            type="text"
-            className="search-term"
-            id="search-term"
-            // value={inputTerm}
-            // onChange={onUpdateAfterChange}
-            // onKeyPress={onKeyPressed}
-            placeholder="Search"
-          />
-
-          <button className="search-btn">
-            <FiSearch color="#707070" fontSize="17px" />
-          </button>
-        </div>
-       
-      </div> */}
 
       {/* listing section */}
       <div className="listSection">
-        <div className="listingWrap">
+          {hasErr?
+          <div className="listingWrap err">
+          <h5 >Error:{errMSG}</h5>
+          <h6 >Error Establishing a Database Connection</h6>
+          </div>
+          :
+          <div className="listingWrap">
           {myData.map((item, id) => {
             return (
               <ArtistItem
@@ -90,12 +101,10 @@ function ArtistsHome() {
             );
           })}
           <nav>
-            <Link to="/add">
-       
-              <AddArtistBtn />
-            </Link>
+            <Link to="/add"><AddArtistBtn /></Link>
           </nav>
-        </div>
+          
+        </div>}
       </div>
 
       {/* description Modal */}
